@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "AOTS6"
+authors:
+  - family-names: "Alfaro Garcia"
+    given-names: "Alfredo Jhovany"
+    email: aots6@ietf.org
+version: "0.1.0"
+date-released: "2026-03-01"
+repository-code: "https://github.com/fo22Alfaro"
