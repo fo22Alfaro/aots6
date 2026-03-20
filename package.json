@@ -1,0 +1,8 @@
+{
+  "name": "aots6-api",
+  "version": "0.1.0",
+  "description": "AOTS6 x402 Payment API",
+  "main": "api/aots6-core.js",
+  "engines": { "node": ">=20" },
+  "scripts": { "start": "node api/aots6-core.js" }
+}
