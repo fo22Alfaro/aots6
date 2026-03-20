@@ -1,180 +1,137 @@
-# AOTS6 — Ontological Toroidal System
+# AOTS6 — Ontological Toroidal Systemic Architecture
 
+[![Tests](https://img.shields.io/badge/tests-57%2F57%20PASS-brightgreen)](https://github.com/fo22Alfaro/aots6)
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://python.org)
+[![API](https://img.shields.io/badge/API-live-green)](https://aots6-repo.vercel.app/api/aots6-core)
+[![x402](https://img.shields.io/badge/payment-x402-orange)](https://aots6-repo.vercel.app/api/aots6-core)
+[![License](https://img.shields.io/badge/license-All%20Rights%20Reserved-red)](LICENSE)
 
+> **Alfredo Jhovany Alfaro García · Guadalupe Victoria, Puebla, México · 21 marzo 2025**
 
-![Validation](https://github.com/fo22Alfaro/aots6/actions/workflows/ci.yml/badge.svg)
+AOTS6 unifies distributed systems, quantum physics, algebraic topology,
+DNA bio-computation, nuclear QCD and toroidal cosmology on the manifold
+**T^6 = (S^1)^6** — verified by 57/57 formal tests.
 
-
-
-
-![Python](https://img.shields.io/badge/python-3.8%2B-blue)
-
-
-
-
-![License](https://img.shields.io/badge/license-All%20Rights%20Reserved-red)
-
-
-
-
-![Draft](https://img.shields.io/badge/IETF-draft--alfaro--aots6--01-orange)
-
-
-
-> **Author:** Alfredo Jhovany Alfaro Garcia
-> **Draft:** `draft-alfaro-aots6-01` - March 2026
-> **Contact:** aots6@ietf.org
-> **License:** (c) 2025-2026 Alfredo Jhovany Alfaro Garcia — All Rights Reserved
-
----
-
-## What is AOTS6?
-
-**AOTS6** is an Ontological Toroidal System and protocol for modeling
-identity, knowledge, and semantic coherence in distributed cognitive
-architectures.
-
-It embeds every node in a **six-dimensional toroidal manifold**
-T^6 = (S^1)^6 and enforces identity continuity through a cryptographic
-hash chain, solving two structural problems common to distributed systems:
-
-| Problem | AOTS6 Solution |
-|---|---|
-| Identity drift | Hash chain `I(v) = H(v \|\| context \|\| t)` |
-| Topological discontinuity | Continuous T^6 manifold with wrap-around distance |
-
----
-
-## Architecture
-+-----------------------------+
-|      Evolution Layer        |  EVOLVE  -- semantic state transitions
-+-----------------------------+
-|   Integrity Layer (Hashes)  |  VERIFY  -- SHA-256 identity chain
-+-----------------------------+
-|  Ontological Layer (Graph)  |  LINK    -- typed, weighted edges G=(V,E,lambda)
-+-----------------------------+
-|      Node Layer (Data)      |  INIT    -- T^6 coordinates + context
-+-----------------------------+
-### Six Semantic Dimensions of T^6
-
-| # | Dimension  | Semantics                      |
-|---|------------|--------------------------------|
-| 0 | Temporal   | Causality, event ordering      |
-| 1 | Spatial    | Physical / network locality    |
-| 2 | Logical    | Binary / symbolic layer        |
-| 3 | Memory     | Persistence, state depth       |
-| 4 | Network    | Communication topology         |
-| 5 | Inference  | Reasoning, model context       |
-
----
-
-## Repository Structure
-aots6/
-|-- aots6_core.py        # T^6 manifold, identity function, ontological graph
-|-- aots6_network.py     # Protocol messages, peer agents, message bus
-|-- aots6_validation.py  # 7 reproducible test cases (RFC section 5)
-|-- aots6_demo.py        # End-to-end demonstration runner
-|-- AOTS6_Paper.md       # Academic specification paper
-|-- README.md
-|-- LICENSE              # All Rights Reserved
-|-- NOTICE               # Authorship declaration
-|-- CONTRIBUTING.md      # Contribution policy
-|-- CITATION.cff         # Academic citation metadata
-|-- requirements.txt     # No external dependencies (stdlib only)
-|-- setup.py             # Package setup
-`-- .gitignore
 ---
 
 ## Quick Start
 
-**Requirements:** Python 3.8+ -- No external dependencies
-
 ```bash
 git clone https://github.com/fo22Alfaro/aots6.git
 cd aots6
-python3 aots6_demo.py
-Expected output:
-[+] [PASS] TC-01 Identity Stability
-  [+] [PASS] TC-02 Graph Consistency
-  [+] [PASS] TC-03 Evolution Integrity
-  [+] [PASS] TC-04 Toroidal Distance Symmetry
-  [+] [PASS] TC-05 Message Signature Validity
-  [+] [PASS] TC-06 Network Convergence
-  [+] [PASS] TC-07 Consistency Constraint
-  Result: 7/7 passed
-Core API
-from aots6_core    import AOTS6Node, ToroidalCoordinate, AOTS6Edge
-from aots6_network import AOTS6Network
+pip install numpy scipy
+python3 aots6_unified.py    # 20/20 PASS
+python3 aots6_master.py     # full system
+```
 
-# 1 -- Create network
-net   = AOTS6Network()
-alpha = net.add_peer("Alpha", ToroidalCoordinate([0.1, 0.2, 0.3, 0.4, 0.5, 0.6]))
-beta  = net.add_peer("Beta",  ToroidalCoordinate([0.6, 0.5, 0.4, 0.3, 0.2, 0.1]))
+---
 
-# 2 -- Link peers (RFC section 4.2 LINK)
-ids = net.peer_ids()
-alpha.link(ids[1], "communicates_with", weight=0.9)
+## Live API — x402 Payment Required
 
-# 3 -- Evolve semantic state (RFC section 4.4 EVOLVE)
-alpha.evolve({"status": "active", "load": 0.42})
+**Base URL:** `https://aots6-repo.vercel.app/api/aots6-core`
 
-# 4 -- Verify identity integrity (RFC section 4.3 VERIFY)
-print(all(alpha.verify().values()))  # True
-Formal Foundations
-Identity function (RFC section 2.3):
-I(v) = H(node_id(v) || context || t)     H = SHA-256
-Consistency constraint (RFC section 2.4):
-for all v in V:  I(v)_t = I(v)_{t+1}  <=>  Delta(v) = 0
-Toroidal distance (RFC section 2.1):
-d(a, b) = sqrt( sum_i min(|a_i - b_i|, 1 - |a_i - b_i|)^2 )
-Validation Results
-TC
-Name
-Result
-Time
-TC-01
-Identity Stability
-PASS
-~0.1ms
-TC-02
-Graph Consistency
-PASS
-~0.4ms
-TC-03
-Evolution Integrity
-PASS
-~0.1ms
-TC-04
-Toroidal Distance Symmetry
-PASS
-~0.2ms
-TC-05
-Message Signature Validity
-PASS
-~0.1ms
-TC-06
-Network Convergence
-PASS
-~0.5ms
-TC-07
-Consistency Constraint
-PASS
-~0.2ms
-Academic Citation
-@techreport{alfaro2026aots6,
-  author      = {Alfaro Garcia, Alfredo Jhovany},
-  title       = {{AOTS6}: Ontological Toroidal System and Protocol
-                 for Distributed Cognitive Architectures},
-  institution = {AOTS6 Research},
-  year        = {2026},
-  month       = {March},
-  type        = {Internet-Draft},
-  number      = {draft-alfaro-aots6-01},
-  url         = {https://github.com/fo22Alfaro/aots6}
+### Free endpoints
+
+```bash
+# Catalog + pricing
+curl https://aots6-repo.vercel.app/api/aots6-core
+
+# SHA-256 of any module
+curl "https://aots6-repo.vercel.app/api/aots6-core?action=hash&module=quantum"
+
+# Identity function I(v) = SHA-256(id‖context‖t) live demo
+curl "https://aots6-repo.vercel.app/api/aots6-core?action=identity"
+
+# T^6 math formulas
+curl "https://aots6-repo.vercel.app/api/aots6-core?action=math"
+
+# System status + test results
+curl "https://aots6-repo.vercel.app/api/aots6-core?action=status"
+```
+
+### Paid endpoints (USDC on Base)
+
+| Module | Price | Description |
+|--------|-------|-------------|
+| `core` | $3.00 | T^6 + identity + ontological graph |
+| `network` | $3.00 | INIT·LINK·VERIFY·EVOLVE protocol |
+| `quantum` | $5.00 | Kitaev·Lindblad·FluxQubit on T^6 |
+| `topology` | $5.00 | π₁·De Rham·K-theory·Categories |
+| `millennium` | $5.00 | Millennium Problems exploration |
+| `cad` | $5.00 | CAD·T^11·T^∞·¹¹∞∆⁶ |
+| `unified` | $10.00 | Master field Ψ_AOTS6 — 6 studies |
+| `all` | $25.00 | All modules |
+
+### Payment flow
+
+```bash
+# Step 1 — Request resource (returns 402 + payment instructions)
+curl "https://aots6-repo.vercel.app/api/aots6-core?action=code&module=quantum"
+
+# Step 2 — Pay $5.00 USDC on Base (chain 8453) to:
+# 0x3c8808532E3BBCFCe9f6a1A9b602A4c1678050a8
+
+# Step 3 — Verify payment on-chain
+curl "https://aots6-repo.vercel.app/api/aots6-core?action=verify&tx=YOUR_TX_HASH&network=base&module=quantum"
+# Returns: { "access_token": "..." }
+
+# Step 4 — Access resource
+curl -H "X-Access-Token: YOUR_TOKEN" \
+  "https://aots6-repo.vercel.app/api/aots6-core?action=code&module=quantum"
+```
+
+**AI agents:** EIP-3009 `transferWithAuthorization` supported for gasless payments.
+Coinbase CDP SDK compatible.
+
+---
+
+## The T^6 Manifold
+
+```
+T^6 = (S^1)^6
+
+D0  Temporal  — causality, physical time
+D1  Spatial   — locality, geometry
+D2  Logical   — symbolic, QCD color
+D3  Memory    — persistence, epigenetics
+D4  Network   — communication, gluons
+D5  Inference — reasoning, cosmology Λ
+
+d(a,b) = √(Σᵢ min(|aᵢ-bᵢ|, 1-|aᵢ-bᵢ|)²)
+I(v)   = SHA-256(node_id ‖ context ‖ t)
+π₁(T^6) = Z^6
+K^0(T^6) = Z^32
+```
+
+---
+
+## Validation Results
+
+```
+TC-01..07   Core protocol        7/7  PASS
+QTC-01..08  Quantum framework    8/8  PASS
+AT-01..10   Algebraic topology  10/10 PASS
+CAD-01..12  CAD + T^11          12/12 PASS
+UNF-01..20  Unified nucleus     20/20 PASS
+─────────────────────────────────────────
+TOTAL                           57/57 PASS
+```
+
+---
+
+## Cite
+
+```bibtex
+@software{alfaro_aots6_2025,
+  author  = {Alfaro García, Alfredo Jhovany},
+  title   = {AOTS6: Ontological Toroidal Systemic Architecture},
+  year    = {2025},
+  url     = {https://github.com/fo22Alfaro/aots6},
+  note    = {draft-alfaro-aots6-01}
 }
-IPFS Manifest
-https://ipfs.io/ipfs/bafybeie5k7pca4xbj3ktm7yi4mprgjzjchdgmtgdkgbot6mf64cwwwsgke
-License
-(c) 2025-2026 Alfredo Jhovany Alfaro Garcia -- All Rights Reserved.
-See LICENSE for full terms.
-Permission requests: aots6@ietf.org
+```
+
+---
+
+© 2025–2026 Alfredo Jhovany Alfaro García — All Rights Reserved
+`draft-alfaro-aots6-01` · IPFS: `bafybeie5k7pca4xbj3ktm7yi4mprgjzjchdgmtgdkgbot6mf64cwwwsgke`
