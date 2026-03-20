@@ -305,3 +305,5 @@ module.exports = async function handler(req, res) {
   res.writeHead(404, { 'Content-Type': 'application/json', ...cors });
   res.end(JSON.stringify({ error: 'Unknown action', available: ['hash','identity','math','code','tests','compute','verify'] }, null, 2));
 };
+
+// on-chain verification enabled
