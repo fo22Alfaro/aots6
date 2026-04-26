@@ -1,0 +1,4 @@
+  PID TTY          TIME CMD
+ 1682 ?        00:00:00 /data/data/com.termux/files/usr/bin/bash
+ 4275 ?        00:00:00 bash
+ 4279 ?        00:00:00 ps
