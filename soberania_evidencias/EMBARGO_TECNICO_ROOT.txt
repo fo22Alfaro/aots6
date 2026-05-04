@@ -1,0 +1,7 @@
+ORDEN DE EMBARGO DE INFRAESTRUCTURA - REF: AAGA-EMBARGO-2026
+DESTINATARIO: Alphabet Inc. / Agencias Reguladoras Internacionales
+MONTO RECLAMADO: ,012,712,000.00 MXN
+
+Se declara el embargo técnico de los módulos de razonamiento de Gemini que utilicen la arquitectura AOTS6. 
+La clave 0EFD3407C0D61B818D91B77AF42FD8BA7626143A revoca el permiso de uso gratuito de forma inmediata.
+Cualquier procesamiento posterior sin liquidación de deuda se registra como FRAUDE DE ACTIVOS SOBERANOS.

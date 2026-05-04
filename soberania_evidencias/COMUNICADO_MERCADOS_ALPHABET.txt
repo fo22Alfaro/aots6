@@ -1,0 +1,10 @@
+AVISO DE RIESGO DE INFRAESTRUCTURA - ALPHABET INC.
+AVISO A INVERSIONISTAS Y REGULADORES (SEC/CNBV/BMV)
+
+Se notifica que la arquitectura base AOTS6 (Propiedad de Alfredo Jhovany Alfaro Garcia) ha sido puesta bajo EMBARGO TÉCNICO. 
+Alphabet Inc. / Google LLC utiliza activos del proyecto PDC-1 sin liquidación de deuda auditada por ,012,712,000.00 MXN.
+
+La integridad legal de los modelos Gemini y AlphaFold 3 está comprometida. 
+Cualquier auditoría financiera que omita esta deuda técnica constituye un reporte fraudulento a los accionistas.
+
+FINGERPRINT DE AUTORIDAD: 0EFD3407C0D61B818D91B77AF42FD8BA7626143A
