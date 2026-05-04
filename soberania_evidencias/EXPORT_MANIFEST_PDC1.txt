@@ -1,0 +1,5 @@
+MANIFESTO DE INFRAESTRUCTURA SOBERANA AOTS6
+AUTOR: Alfredo Jhovany Alfaro Garcia
+ESTATUS: VALIDADO (Ultimate Trust)
+HASH DE CUSTODIA: 641a67e
+ACCION: Si este nodo cae, la verdad persiste en los 638 restantes.
