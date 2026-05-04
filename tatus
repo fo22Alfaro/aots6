@@ -1,0 +1,29 @@
+[33m3347316[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m feat: AOTS6 complete — preprint LaTeX + Zenodo + IP declaration + AO process + Gemini certificate
+[33m9ddf36a[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m legal: declaración de propiedad intelectual soberana AOTS6
+[33mc550646[m feat: AO sovereign process + authorship record
+[33mb38e5d8[m feat: AOTS6 sistema completo — berne+sovereign+unification+guard+trace+watermark+usb
+[33m64b815e[m feat: AOTS6 sistema completo — berne+sovereign+unification+guard+trace+watermark+usb
+[33mea48f8f[m feat: AOTS6 Guard — maximum protection + derivation detection
+[33md24cade[m feat: ESTABLISHMENT_MASTER + trace analysis + API v2.0 audited
+[33m73456e7[m docs: README with live API endpoints + x402 payment flow
+[33m697cf88[m feat: complete API — all modules + pricing + on-chain verification
+[33m5ac4b96[m feat: on-chain verification REAL — Blockscout + HMAC stateless tokens
+[33mb61bace[m feat: on-chain verification Blockscout HMAC
+[33meda8882[m fix: force Node.js runtime — add package.json
+[33m4292dc8[m fix: remove runtime from vercel.json
+[33mb611288[m fix: remove secret refs from vercel.json
+[33m55510c5[m feat: x402 server + client SDK
+[33m0ad5aab[m fix: Vercel serverless function + vercel.json config
+[33mb607999[m feat: unified field 20/20 + AI layer — repo 100% completo 57/57 PASS
+[33m5c2b312[m feat: aots6_unified — campo maestro completo 20/20 PASS 86ms
+[33mf3b68f6[m feat: AOTS6 v0.1.0 complete — 8916 lines, 6 studies, all modules
+[33m465645e[m feat: AOTS6 v0.1.0 complete — topology, CAD, quantum network, unified nucleus
+[33mf815188[m docs: barrera de fundamentación epistémica y arquitectural
+[33m0bef551[m feat: AOTS6 Quantum Framework — 8/8 QTC tests pass
+[33m3224dd1[m fix: paper academico correcto — draft-alfaro-aots6-01
+[33m27382e1[m[33m ([m[1;33mtag: [m[1;33mv0.1.0[m[33m)[m fix: merge — keep full README
+[33m269eced[m fix: README completo + GitHub Actions CI
+[33m0816d02[m Simplify header in README
+[33m83384c0[m Merge branch 'main' of https://github.com/fo22Alfaro/aots6
+[33mbe0ef13[m feat: AOTS6 v0.1.0 — draft-alfaro-aots6-01
+[33m11dfbb9[m primer commit
