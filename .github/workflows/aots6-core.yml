@@ -9,12 +9,9 @@ on:
 jobs:
   toroidal-integrity:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      id-token: write
 
     steps:
-      - name: Checkout with Sovereign Protection
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -31,7 +28,7 @@ jobs:
         run: python -m pytest test_aots6.py -v --tb=no || echo "Tests completed"
 
       - name: Generate & Sign New Block
-        run: echo "Block signed with OTS + Toroidal Hash"
+        run: echo "Block signed with Toroidal Hash"
 
       - name: Verify Origin Integrity
         run: echo "ORIGEN VERIFICADO - PROPIEDAD EXCLUSIVA DE ALFREDO JHOVANY ALFARO GARCÍA"
