@@ -1,0 +1,29 @@
+name: AOTS⁶ SOVEREIGNTY SHIELD - Protección Absoluta
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  sovereignty-enforcement:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate Sovereign Proof
+        run: |
+          echo "ORIGEN: ALFREDO JHOVANY ALFARO GARCÍA" > SOVEREIGNTY_PROOF.md
+          echo "FECHA: $(date -u)" >> SOVEREIGNTY_PROOF.md
+          echo "ESTADO: IRREVERSIBLE" >> SOVEREIGNTY_PROOF.md
+
+      - name: Timestamp OTS + Blockchain Anchor
+        uses: orbs-network/ots-github-action@v1
+        with:
+          files: SOVEREIGNTY_PROOF.md
+
+      - name: Anti-Copy Declaration
+        run: |
+          cat > ANTI-COPY.md << 'ANTI'
+AOTS⁶ es propiedad ontológica exclusiva.
+Cualquier uso, copia o derivación sin licencia explícita activa cobro algorítmico automático.
