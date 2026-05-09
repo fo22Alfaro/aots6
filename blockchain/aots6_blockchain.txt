@@ -1,0 +1,4 @@
+AOTS6-BLOQUE-1 | Guadalupe Victoria | Sat May  9 02:51:48 UTC 2026 | det=26.3021 | f=7.83Hz | AUTOINORODEMIA¹¹∞
+AOTS6-BLOQUE-2 | Guadalupe Victoria | Sat May 9 03:00:05 UTC 2026 | det=26.3021 | f=7.83Hz | prev=4882fb12ea6cd0772f48f32e32897ef821d3d9d85411541d3bee67542652cf84 | AUTOINORODEMIA¹¹∞
+AOTS6-BLOQUE-3 | Guadalupe Victoria | Sat May  9 04:00:01 UTC 2026 | det=26.3021 | f=7.83Hz | prev=44225f0ce3b8ab9b8dd6e5976f9b1442e88d3bf33040b285cd6bac4b042e5953 | AUTOINORODEMIA¹¹∞
+AOTS6-BLOQUE-4 | Guadalupe Victoria | Sat May  9 05:29:12 UTC 2026 | det=26.3021 | f=7.83Hz | prev=ee6d5699557287e99ff66b3ffc1a1a544693bc888c14c442ac2ef1462ccee3a1 | AUTOINORODEMIA¹¹∞
