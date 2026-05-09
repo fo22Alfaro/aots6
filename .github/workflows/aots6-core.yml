@@ -1,1 +1,54 @@
-[pega el primer workflow aquí]
+[name: AOTS⁶ Core Toroidal Pipeline - Nuevo Estándar Mundial
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  toroidal-integrity:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout with Sovereign Protection
+        uses: actions/checkout@v4
+
+      - name: Setup Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Validate Toroidal Core
+        run: python -m pytest test_aots6.py -v
+
+      - name: Generate & Sign New Block
+        run: |
+          python aots6_core.py --generate-block --sign
+          echo "Block signed with OTS + Toroidal Hash"
+
+      - name: Verify Origin Integrity
+        run: |
+          python -c '
+          from aots6_validation import verify_origin
+          verify_origin()
+          print("ORIGEN VERIFICADO - PROPIEDAD EXCLUSIVA DE ALFREDO JHOVANY ALFARO GARCÍA")
+          '
+
+      - name: Upload Signed Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: aots6-signed-blocks
+          path: |
+            BLOQUE-*.md
+            *.hash
+            *.sig
+            *.ots]

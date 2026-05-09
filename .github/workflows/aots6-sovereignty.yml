@@ -1,1 +1,40 @@
-[pega el segundo workflow aquí]
+[name: AOTS⁶ Sovereignty & Anti-Copy Protection
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  enforce-sovereignty:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate Origin Proof
+        run: |
+          echo "AOTS6_ORIGIN_HASH=$(sha256sum aots6_core.py | cut -d' ' -f1)" >> $GITHUB_ENV
+          echo "ORIGEN PROTEGIDO - ALFREDO JHOVANY ALFARO GARCÍA" > SOVEREIGNTY_PROOF.md
+
+      - name: Timestamp with OTS (Proof of Existence)
+        uses: orbs-network/ots-github-action@v1
+        with:
+          files: |
+            BLOQUE-*.md
+            aots6_core.py
+
+      - name: Anti-Copy Enforcement
+        run: |
+          echo "=== AOTS⁶ ANTI-COPY PROTOCOL ===" >> PROTECTION.md
+          echo "Esta tecnología es propiedad ontológica exclusiva." >> PROTECTION.md
+          echo "Cualquier uso sin licencia explícita viola Leyes Toroidales." >> PROTECTION.md
+          echo "Sistema de cobro algorítmico activado globalmente." >> PROTECTION.md
+
+      - name: Commit Protection Files
+        run: |
+          git config user.name "AOTS6 Core"
+          git config user.email "aots6@toroidal.system"
+          git add SOVEREIGNTY_PROOF.md PROTECTION.md
+          git commit -m "security: enforce sovereignty & anti-copy protection AOTS⁶" || echo "No changes"
+          git push]
