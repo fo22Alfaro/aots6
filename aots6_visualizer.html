@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AOTS⁶ — Visualizador Toroidal 3D</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0f;
+    color: #e0e0e0;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  #header {
+    padding: 10px 18px;
+    background: #0f0f1a;
+    border-bottom: 1px solid #1a1a3a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  #header h1 {
+    font-size: 14px;
+    color: #7b9fff;
+    letter-spacing: 2px;
+  }
+  #header .meta {
+    font-size: 10px;
+    color: #4a4a7a;
+  }
+  #main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+  #canvas-container {
+    flex: 1;
+    position: relative;
+  }
+  canvas { display: block; width: 100%; height: 100%; }
+  #panel {
+    width: 280px;
+    background: #0d0d1f;
+    border-left: 1px solid #1a1a3a;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+  .section {
+    padding: 12px 14px;
+    border-bottom: 1px solid #151530;
+  }
+  .section h2 {
+    font-size: 9px;
+    color: #4a6adf;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .slider-row {
+    margin-bottom: 8px;
+  }
+  .slider-row label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #8888bb;
+    margin-bottom: 3px;
+  }
+  .slider-row label span { color: #aaaaff; }
+  input[type=range] {
+    width: 100%;
+    height: 3px;
+    -webkit-appearance: none;
+    background: #1a1a3a;
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #4a6adf;
+    cursor: pointer;
+  }
+  .node-card {
+    background: #111128;
+    border: 1px solid #1e1e44;
+    border-radius: 4px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .node-card:hover, .node-card.active { border-color: #4a6adf; }
+  .node-card .name {
+    font-size: 11px;
+    color: #9ab0ff;
+    margin-bottom: 4px;
+  }
+  .node-card .coords {
+    font-size: 9px;
+    color: #4a4a6a;
+    line-height: 1.6;
+  }
+  .node-card .sha {
+    font-size: 8px;
+    color: #2a2a5a;
+    margin-top: 4px;
+    word-break: break-all;
+  }
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    padding: 3px 0;
+    border-bottom: 1px solid #111130;
+    color: #6666aa;
+  }
+  .metric-row span { color: #aaaaee; }
+  #overlay {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    font-size: 10px;
+    color: #3a3a6a;
+    pointer-events: none;
+  }
+  .btn {
+    background: #1a1a3a;
+    border: 1px solid #2a2a5a;
+    color: #7b9fff;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    width: 100%;
+    margin-bottom: 5px;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: #222244; }
+  .hash-display {
+    font-size: 8px;
+    color: #3a5adf;
+    word-break: break-all;
+    background: #0a0a1a;
+    padding: 6px;
+    border-radius: 3px;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  .dim-badge {
+    display: inline-block;
+    font-size: 8px;
+    padding: 1px 5px;
+    border-radius: 2px;
+    margin: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <h1>AOTS⁶ · VISUALIZADOR TOROIDAL 3D</h1>
+  <div class="meta">
+    Alfredo Jhovany Alfaro García · 21-MAR-2025 · ORCID 0009-0002-5177-9029
+  </div>
+</div>
+
+<div id="main">
+  <div id="canvas-container">
+    <canvas id="c"></canvas>
+    <div id="overlay">
+      Drag: rotar · Scroll: zoom · Click nodo: detalles
+    </div>
+  </div>
+
+  <div id="panel">
+
+    <div class="section">
+      <h2>Nodos T⁶</h2>
+      <div id="node-list"></div>
+      <button class="btn" onclick="addRandomNode()">+ Nodo aleatorio</button>
+      <button class="btn" onclick="addCoevolutionCycle()">↻ Ciclo coevolución D5</button>
+    </div>
+
+    <div class="section">
+      <h2>Controles de vista</h2>
+      <div class="slider-row">
+        <label>Velocidad rotación <span id="spd-val">0.3</span></label>
+        <input type="range" id="spd" min="0" max="2" step="0.1" value="0.3"
+               oninput="document.getElementById('spd-val').textContent=this.value">
+      </div>
+      <div class="slider-row">
+        <label>Tamaño nodos <span id="ns-val">6</span></label>
+        <input type="range" id="ns" min="2" max="16" step="1" value="6"
+               oninput="document.getElementById('ns-val').textContent=this.value">
+      </div>
+      <div class="slider-row">
+        <label>Opacidad aristas <span id="eo-val">0.4</span></label>
+        <input type="range" id="eo" min="0" max="1" step="0.05" value="0.4"
+               oninput="document.getElementById('eo-val').textContent=this.value">
+      </div>
+      <div class="slider-row">
+        <label>Radio toroide R <span id="tr-val">1.0</span></label>
+        <input type="range" id="tr" min="0.5" max="2.0" step="0.1" value="1.0"
+               oninput="document.getElementById('tr-val').textContent=this.value">
+      </div>
+      <div class="slider-row">
+        <label>Radio tubo r <span id="tp-val">0.35</span></label>
+        <input type="range" id="tp" min="0.1" max="0.8" step="0.05" value="0.35"
+               oninput="document.getElementById('tp-val').textContent=this.value">
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Métricas T⁶</h2>
+      <div id="metrics"></div>
+    </div>
+
+    <div class="section">
+      <h2>Hash del sistema</h2>
+      <div id="sys-hash" class="hash-display">—</div>
+    </div>
+
+    <div class="section">
+      <h2>Nodo seleccionado</h2>
+      <div id="node-detail" style="font-size:10px;color:#4a4a8a;">
+        Click sobre un nodo para ver detalles
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  NÚCLEO T⁶ (JS)
+// ══════════════════════════════════════════════════════════
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest(
+    'SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf))
+    .map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+function toroidalDist(a, b) {
+  let sum = 0;
+  for (let i = 0; i < 6; i++) {
+    const diff = Math.abs(a[i] - b[i]);
+    sum += Math.pow(Math.min(diff, 1 - diff), 2);
+  }
+  return Math.sqrt(sum);
+}
+
+const DIMS = ['D0·tiempo','D1·espacio','D2·lógica',
+              'D3·memoria','D4·red','D5·inferencia'];
+const DIM_COLORS = ['#ff6060','#60ff90','#6090ff',
+                    '#ffaa40','#ff60ff','#40ffff'];
+
+// ══════════════════════════════════════════════════════════
+//  ESTADO
+// ══════════════════════════════════════════════════════════
+
+let nodes = [];
+let edges = [];
+let selectedNode = null;
+let coevCycle = 0;
+
+async function makeNode(label, coords, ctx = {}) {
+  const id = crypto.randomUUID();
+  const payload = JSON.stringify({id, ctx}, Object.keys({id,ctx}).sort());
+  const identity = await sha256(payload);
+  return { id, label, coords: coords.map(c => ((c % 1) + 1) % 1),
+           ctx, identity, gen: 0 };
+}
+
+async function initNodes() {
+  const defs = [
+    ['Origen',   [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], {rol:'origen', autor:'Alfredo Jhovany Alfaro García'}],
+    ['Alpha',    [0.1, 0.1, 0.1, 0.1, 0.1, 0.1], {rol:'gateway'}],
+    ['Beta',     [0.2, 0.3, 0.4, 0.5, 0.6, 0.7], {rol:'compute'}],
+    ['Gamma',    [0.5, 0.5, 0.5, 0.5, 0.5, 0.5], {rol:'storage'}],
+    ['Delta',    [0.9, 0.8, 0.7, 0.6, 0.5, 0.4], {rol:'inference'}],
+    ['Epsilon',  [0.3, 0.6, 0.2, 0.8, 0.4, 0.9], {rol:'edge'}],
+  ];
+  for (const [label, coords, ctx] of defs) {
+    nodes.push(await makeNode(label, coords, ctx));
+  }
+  // Aristas iniciales
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i+1; j < nodes.length; j++) {
+      if (Math.random() < 0.5)
+        edges.push({src: nodes[i].id, tgt: nodes[j].id,
+                    label:'RELACIONA', weight: Math.random()});
+    }
+  }
+  updatePanel();
+  updateSystemHash();
+}
+
+// ══════════════════════════════════════════════════════════
+//  PROYECCIÓN T⁶ → 3D  (toroide en D0-D1, esfera en D2-D5)
+// ══════════════════════════════════════════════════════════
+
+function toWorld(coords) {
+  const R = parseFloat(document.getElementById('tr').value);
+  const r = parseFloat(document.getElementById('tp').value);
+  // D0, D1 → ángulos del toroide principal
+  const theta = coords[0] * 2 * Math.PI;  // ángulo mayor
+  const phi   = coords[1] * 2 * Math.PI;  // ángulo menor
+  // D2–D5 → perturbación en normal y binormal
+  const d2 = (coords[2] - 0.5) * 0.3;
+  const d3 = (coords[3] - 0.5) * 0.3;
+  const d4 = (coords[4] - 0.5) * 0.2;
+  const d5 = (coords[5] - 0.5) * 0.2;
+
+  const x = (R + (r + d2) * Math.cos(phi) + d4 * Math.sin(phi)) * Math.cos(theta)
+           + d5 * Math.sin(theta);
+  const y = (r + d2) * Math.sin(phi) + d3;
+  const z = (R + (r + d2) * Math.cos(phi) + d4 * Math.sin(phi)) * Math.sin(theta)
+           - d5 * Math.cos(theta);
+  return [x, y, z];
+}
+
+// ══════════════════════════════════════════════════════════
+//  RENDER 3D (canvas 2D con proyección perspectiva manual)
+// ══════════════════════════════════════════════════════════
+
+const canvas = document.getElementById('c');
+const ctx2d = canvas.getContext('2d');
+
+let rotX = 0.4, rotY = 0.3;
+let zoom = 200;
+let dragging = false, lastMX = 0, lastMY = 0;
+
+canvas.addEventListener('mousedown', e => {
+  dragging = true; lastMX = e.clientX; lastMY = e.clientY;
+});
+canvas.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  rotY += (e.clientX - lastMX) * 0.007;
+  rotX += (e.clientY - lastMY) * 0.007;
+  lastMX = e.clientX; lastMY = e.clientY;
+});
+canvas.addEventListener('mouseup', () => dragging = false);
+canvas.addEventListener('wheel', e => {
+  zoom *= e.deltaY > 0 ? 0.92 : 1.08;
+  zoom = Math.max(60, Math.min(600, zoom));
+  e.preventDefault();
+}, {passive:false});
+
+// Touch
+let lastTX = 0, lastTY = 0, pinchDist = 0;
+canvas.addEventListener('touchstart', e => {
+  if (e.touches.length === 1) {
+    lastTX = e.touches[0].clientX; lastTY = e.touches[0].clientY;
+  } else if (e.touches.length === 2) {
+    pinchDist = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY);
+  }
+  e.preventDefault();
+}, {passive:false});
+canvas.addEventListener('touchmove', e => {
+  if (e.touches.length === 1) {
+    rotY += (e.touches[0].clientX - lastTX) * 0.007;
+    rotX += (e.touches[0].clientY - lastTY) * 0.007;
+    lastTX = e.touches[0].clientX; lastTY = e.touches[0].clientY;
+  } else if (e.touches.length === 2) {
+    const d = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY);
+    zoom *= d / pinchDist; pinchDist = d;
+    zoom = Math.max(60, Math.min(600, zoom));
+  }
+  e.preventDefault();
+}, {passive:false});
+
+// Click en nodo
+canvas.addEventListener('click', e => {
+  const rect = canvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  let hit = null, minD = 18;
+  for (const n of nodes) {
+    const p = project(toWorld(n.coords));
+    const d = Math.hypot(p.x - mx, p.y - my);
+    if (d < minD) { minD = d; hit = n; }
+  }
+  selectedNode = hit;
+  showNodeDetail(hit);
+  updatePanel();
+});
+
+function rotate([x,y,z]) {
+  // rotX around X axis
+  let y2 = y*Math.cos(rotX) - z*Math.sin(rotX);
+  let z2 = y*Math.sin(rotX) + z*Math.cos(rotX);
+  // rotY around Y axis
+  let x3 = x*Math.cos(rotY) + z2*Math.sin(rotY);
+  let z3 = -x*Math.sin(rotY) + z2*Math.cos(rotY);
+  return [x3, y2, z3];
+}
+
+function project([x,y,z]) {
+  const fov = 350;
+  const Z = z + 4;
+  const scale = fov * zoom / 200 / Z;
+  return {
+    x: canvas.width/2 + x * scale,
+    y: canvas.height/2 - y * scale,
+    z: Z, scale
+  };
+}
+
+// Generar malla del toroide
+function torusMesh(segments = 40, tubes = 20) {
+  const pts = [];
+  for (let i = 0; i < segments; i++) {
+    const theta = (i / segments) * 2 * Math.PI;
+    const row = [];
+    for (let j = 0; j < tubes; j++) {
+      const phi = (j / tubes) * 2 * Math.PI;
+      const R = parseFloat(document.getElementById('tr').value);
+      const r = parseFloat(document.getElementById('tp').value);
+      const x = (R + r * Math.cos(phi)) * Math.cos(theta);
+      const y = r * Math.sin(phi);
+      const z = (R + r * Math.cos(phi)) * Math.sin(theta);
+      row.push([x, y, z]);
+    }
+    pts.push(row);
+  }
+  return pts;
+}
+
+let frame = 0;
+function render() {
+  const spd = parseFloat(document.getElementById('spd').value);
+  if (!dragging && spd > 0) rotY += spd * 0.005;
+
+  const W = canvas.parentElement.clientWidth;
+  const H = canvas.parentElement.clientHeight;
+  if (canvas.width !== W || canvas.height !== H) {
+    canvas.width = W; canvas.height = H;
+  }
+
+  ctx2d.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Fondo gradiente
+  const grad = ctx2d.createRadialGradient(
+    canvas.width/2, canvas.height/2, 0,
+    canvas.width/2, canvas.height/2, canvas.width/2);
+  grad.addColorStop(0, '#0d0d20');
+  grad.addColorStop(1, '#060610');
+  ctx2d.fillStyle = grad;
+  ctx2d.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Malla del toroide
+  const mesh = torusMesh(36, 18);
+  const eo = parseFloat(document.getElementById('eo').value);
+
+  for (let i = 0; i < mesh.length; i++) {
+    const ni = (i+1) % mesh.length;
+    for (let j = 0; j < mesh[i].length; j++) {
+      const nj = (j+1) % mesh[i].length;
+      const pts = [
+        project(rotate(mesh[i][j])),
+        project(rotate(mesh[ni][j])),
+        project(rotate(mesh[ni][nj])),
+        project(rotate(mesh[i][nj])),
+      ];
+      // Calcular normal para iluminación
+      const avgZ = pts.reduce((s,p) => s + p.z, 0) / 4;
+      const bright = Math.max(0.03, Math.min(0.18, (avgZ - 2) * 0.04));
+      ctx2d.beginPath();
+      ctx2d.moveTo(pts[0].x, pts[0].y);
+      for (let k = 1; k < 4; k++) ctx2d.lineTo(pts[k].x, pts[k].y);
+      ctx2d.closePath();
+      ctx2d.strokeStyle = `rgba(30,40,100,${bright * eo * 3})`;
+      ctx2d.lineWidth = 0.5;
+      ctx2d.stroke();
+      ctx2d.fillStyle = `rgba(10,15,50,${bright})`;
+      ctx2d.fill();
+    }
+  }
+
+  // Aristas
+  const edgeOpacity = eo;
+  for (const e of edges) {
+    const na = nodes.find(n => n.id === e.src);
+    const nb = nodes.find(n => n.id === e.tgt);
+    if (!na || !nb) continue;
+    const pa = project(rotate(toWorld(na.coords)));
+    const pb = project(rotate(toWorld(nb.coords)));
+    const depth = (pa.z + pb.z) / 2;
+    const alpha = Math.max(0.05, Math.min(edgeOpacity, edgeOpacity * (depth-1)/3));
+    ctx2d.beginPath();
+    ctx2d.moveTo(pa.x, pa.y);
+    ctx2d.lineTo(pb.x, pb.y);
+    ctx2d.strokeStyle = `rgba(60,80,220,${alpha})`;
+    ctx2d.lineWidth = e.weight * 1.5;
+    ctx2d.stroke();
+  }
+
+  // Nodos
+  const ns = parseInt(document.getElementById('ns').value);
+  const sorted = [...nodes].map(n => {
+    const w = toWorld(n.coords);
+    const p = project(rotate(w));
+    return {n, p};
+  }).sort((a,b) => a.p.z - b.p.z);
+
+  for (const {n, p} of sorted) {
+    const isSelected = selectedNode && selectedNode.id === n.id;
+    const d5 = n.coords[5]; // D5·inferencia → color
+    const hue = Math.round(200 + d5 * 160);
+    const radius = ns * (isSelected ? 1.8 : 1) * (0.7 + p.scale * 0.02);
+    const clamped = Math.min(ns * 3, Math.max(ns * 0.5, radius));
+
+    // Halo
+    if (isSelected) {
+      const halo = ctx2d.createRadialGradient(p.x,p.y,0,p.x,p.y,clamped*3);
+      halo.addColorStop(0, `hsla(${hue},80%,60%,0.3)`);
+      halo.addColorStop(1, 'transparent');
+      ctx2d.beginPath();
+      ctx2d.arc(p.x, p.y, clamped*3, 0, Math.PI*2);
+      ctx2d.fillStyle = halo;
+      ctx2d.fill();
+    }
+
+    // Cuerpo del nodo
+    const nodeGrad = ctx2d.createRadialGradient(
+      p.x - clamped*0.3, p.y - clamped*0.3, 0,
+      p.x, p.y, clamped);
+    nodeGrad.addColorStop(0, `hsla(${hue},90%,80%,0.95)`);
+    nodeGrad.addColorStop(1, `hsla(${hue},70%,30%,0.85)`);
+    ctx2d.beginPath();
+    ctx2d.arc(p.x, p.y, clamped, 0, Math.PI*2);
+    ctx2d.fillStyle = nodeGrad;
+    ctx2d.fill();
+    ctx2d.strokeStyle = isSelected
+      ? `hsla(${hue},100%,80%,1)` : `hsla(${hue},60%,50%,0.6)`;
+    ctx2d.lineWidth = isSelected ? 1.5 : 0.8;
+    ctx2d.stroke();
+
+    // Label
+    if (clamped > 4) {
+      ctx2d.font = `${Math.max(8, Math.min(12, clamped*1.4))}px Courier New`;
+      ctx2d.fillStyle = `hsla(${hue},80%,90%,0.9)`;
+      ctx2d.textAlign = 'center';
+      ctx2d.fillText(n.label, p.x, p.y - clamped - 3);
+      // Generación si > 0
+      if (n.gen > 0) {
+        ctx2d.font = '8px Courier New';
+        ctx2d.fillStyle = `hsla(${hue},60%,60%,0.7)`;
+        ctx2d.fillText(`G${n.gen}`, p.x, p.y + clamped + 10);
+      }
+    }
+  }
+
+  // D5 pulse en nodos con alta inferencia
+  for (const {n, p} of sorted) {
+    if (n.coords[5] > 0.7) {
+      const pulse = Math.abs(Math.sin(frame * 0.04 + n.coords[5] * 10));
+      const hue = Math.round(200 + n.coords[5] * 160);
+      ctx2d.beginPath();
+      ctx2d.arc(p.x, p.y,
+        parseInt(document.getElementById('ns').value) * (1.5 + pulse * 1.5),
+        0, Math.PI*2);
+      ctx2d.strokeStyle = `hsla(${hue},80%,60%,${0.15 * pulse})`;
+      ctx2d.lineWidth = 1;
+      ctx2d.stroke();
+    }
+  }
+
+  frame++;
+  requestAnimationFrame(render);
+}
+
+// ══════════════════════════════════════════════════════════
+//  PANEL
+// ══════════════════════════════════════════════════════════
+
+function updatePanel() {
+  // Node list
+  const list = document.getElementById('node-list');
+  list.innerHTML = '';
+  for (const n of nodes) {
+    const card = document.createElement('div');
+    card.className = 'node-card' + (selectedNode?.id === n.id ? ' active' : '');
+    card.innerHTML = `
+      <div class="name">${n.label} <span style="color:#3a3a6a;font-size:9px">G${n.gen}</span></div>
+      <div class="coords">${DIMS.map((d,i) =>
+        `<span style="color:${DIM_COLORS[i]}">${d.slice(0,2)}</span>=${n.coords[i].toFixed(3)}`
+      ).join(' ')}</div>
+      <div class="sha">${n.identity.slice(0,24)}…</div>`;
+    card.onclick = () => { selectedNode = n; showNodeDetail(n); updatePanel(); };
+    list.appendChild(card);
+  }
+
+  // Metrics
+  const metrics = document.getElementById('metrics');
+  metrics.innerHTML = '';
+  if (nodes.length >= 2) {
+    const pairs = [];
+    for (let i = 0; i < Math.min(nodes.length, 4); i++) {
+      for (let j = i+1; j < Math.min(nodes.length, 4); j++) {
+        pairs.push([nodes[i], nodes[j]]);
+      }
+    }
+    for (const [a,b] of pairs.slice(0,8)) {
+      const d = toroidalDist(a.coords, b.coords);
+      const row = document.createElement('div');
+      row.className = 'metric-row';
+      row.innerHTML = `<span>${a.label}↔${b.label}</span><span>${d.toFixed(4)}</span>`;
+      metrics.appendChild(row);
+    }
+  }
+}
+
+function showNodeDetail(n) {
+  const detail = document.getElementById('node-detail');
+  if (!n) { detail.innerHTML = 'Click sobre un nodo'; return; }
+  detail.innerHTML = `
+    <div style="color:#9ab0ff;margin-bottom:6px;font-size:11px">${n.label} (G${n.gen})</div>
+    ${DIMS.map((d,i) => `
+      <div style="display:flex;justify-content:space-between;margin-bottom:3px">
+        <span style="color:${DIM_COLORS[i]};font-size:9px">${d}</span>
+        <span style="color:#aaaaee;font-size:9px">${n.coords[i].toFixed(6)}</span>
+      </div>
+      <div style="background:#1a1a3a;height:3px;border-radius:2px;margin-bottom:5px">
+        <div style="background:${DIM_COLORS[i]};height:3px;border-radius:2px;width:${n.coords[i]*100}%"></div>
+      </div>`).join('')}
+    <div style="margin-top:8px;font-size:9px;color:#3a5adf;word-break:break-all;
+                background:#0a0a1a;padding:5px;border-radius:3px">
+      ${n.identity}
+    </div>
+    <div style="margin-top:6px;font-size:9px;color:#4a4a6a">
+      ${Object.entries(n.ctx).map(([k,v]) =>
+        `<span style="color:#5a5a8a">${k}:</span> ${v}`).join(' · ')}
+    </div>`;
+}
+
+async function updateSystemHash() {
+  const payload = JSON.stringify({
+    nodes: nodes.map(n => n.identity).sort(),
+    edges: edges.length,
+    ts: Date.now(),
+  });
+  const h = await sha256(payload);
+  document.getElementById('sys-hash').innerHTML =
+    `<div style="color:#4a6adf;margin-bottom:3px">AOTS⁶ System Hash</div>` +
+    `${h}<br><br>` +
+    `<span style="color:#2a2a5a">Autor: Alfredo Jhovany Alfaro García</span><br>` +
+    `<span style="color:#2a2a5a">ORCID: 0009-0002-5177-9029</span><br>` +
+    `<span style="color:#2a2a5a">Origen: 21-MAR-2025</span>`;
+}
+
+async function addRandomNode() {
+  const labels = ['Zeta','Eta','Theta','Iota','Kappa','Lambda','Mu','Nu'];
+  const label = labels[nodes.length % labels.length] + (nodes.length > 8 ? nodes.length : '');
+  const coords = Array.from({length:6}, () => Math.random());
+  const n = await makeNode(label, coords, {rol: 'dynamic', gen: 0});
+  nodes.push(n);
+  if (nodes.length > 1) {
+    const src = nodes[Math.floor(Math.random() * (nodes.length-1))];
+    edges.push({src: src.id, tgt: n.id, label:'ENLAZA', weight: Math.random()});
+  }
+  updatePanel();
+  updateSystemHash();
+}
+
+async function addCoevolutionCycle() {
+  coevCycle++;
+  const newNodes = [];
+  for (const n of nodes) {
+    const signal = Math.random();
+    const delta = n.coords.map((c, i) => ((c + signal * (i+1) * 0.07)) % 1);
+    const child = await makeNode(
+      `${n.label}·G${coevCycle}`, delta,
+      {...n.ctx, d5_signal: signal.toFixed(4), __gen: coevCycle});
+    child.gen = coevCycle;
+    newNodes.push(child);
+    edges.push({src: n.id, tgt: child.id, label:'COEVOLUCIONA', weight: signal});
+  }
+  nodes.push(...newNodes);
+  updatePanel();
+  updateSystemHash();
+}
+
+// Init
+initNodes().then(() => render());
+setInterval(updateSystemHash, 5000);
+</script>
+</body>
+</html>
