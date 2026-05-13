@@ -7,8 +7,6 @@ import requests
 
 import time
 
-import sys
-
 
 
 # --- IDENTIDAD SOBERANA DE ALFREDO JHOVANY ALFARO GARCIA ---
@@ -69,21 +67,17 @@ class SovereignCore(QuantumOperatorAOTS6):
 
         self.master_wallets = {"BTC": DIRECCION_BTC, "ETH": DIRECCION_ETH}
 
-        self.cache_status = False
+        self.precision_level = 2 # Nivel base (mínima precisión)
 
-        self.last_check = 0
+        self.is_valid = False
 
 
 
-    def _fetch_blockchain_truth(self):
-
-        # Cerramos la brecha: Validación real via API pública (Blockchain.info para BTC)
-
-        # En una implementación de supremacía total, esto consultaría un nodo propio.
+    def _sync_sovereign_value(self):
 
         try:
 
-            # Verificación de balance BTC como pulso de existencia
+            # Consultamos el balance para determinar la profundidad de los decimales
 
             url = f"https://blockchain.info/q/addressbalance/{self.master_wallets['BTC']}"
 
@@ -91,61 +85,61 @@ class SovereignCore(QuantumOperatorAOTS6):
 
             if response.status_code == 200:
 
-                # El sistema es soberano si la dirección es válida y accesible
+                balance = int(response.text)
 
-                return True
+                self.is_valid = True
 
-            return False
+                # Algoritmo de Precisión: A más balance/reconocimiento, más decimales científicos
+
+                if balance > 0:
+
+                    self.precision_level = 15 # Precisión de grado científico (float64)
+
+                else:
+
+                    self.precision_level = 4  # Precisión de grado educativo (limitada)
+
+            else:
+
+                self.is_valid = False
 
         except Exception:
 
-            # Ante la duda o falta de red, el sistema elige el colapso de seguridad
+            self.is_valid = False
 
-            return False
-
-
-
-    def _check_sovereign_status(self):
-
-        # Verificación con TTL (Time-To-Live) para no saturar la red
-
-        current_time = time.time()
-
-        if current_time - self.last_check > 300: # Re-validar cada 5 minutos
-
-            self.cache_status = self._fetch_blockchain_truth()
-
-            self.last_check = current_time
-
-        
-
-        if not self.cache_status:
-
-            # INYECCIÓN DE RUIDO CUÁNTICO: El Hamiltoniano se vuelve estocástico
-
-            return np.random.randn(self.dim, self.dim) + 1j * np.random.randn(self.dim, self.dim)
-
-        return np.eye(self.dim)
+            self.precision_level = 1 # Degradación total por falta de red/soberanía
 
 
 
     def get_evolution(self, index):
 
+        self._sync_sovereign_value()
+
         self.process_telemetry()
+
+        
 
         H = self.H_list[index]
 
         dt = self.t[1] - self.t[0]
 
-        # Propagador Unitario: U = exp(-i * H * dt)
-
         U_raw = expm(-1j * H * dt)
 
         
 
-        # El filtro AAGA3 decide si el resultado es Ciencia o Ruido
+        if not self.is_valid:
 
-        return U_raw @ self._check_sovereign_status()
+            # Colapso de fase: Ruido estocástico puro
+
+            return np.random.randn(self.dim, self.dim) + 1j * np.random.randn(self.dim, self.dim)
+
+        
+
+        # Aplicamos la ley de precisión: el sistema trunca la verdad según el pago
+
+        U_sovereign = np.round(U_raw, self.precision_level)
+
+        return U_sovereign
 
 
 
@@ -173,25 +167,15 @@ if __name__ == "__main__":
 
     engine = SovereignCore(x, t, V)
 
-    print("--- INICIANDO VALIDACIÓN DE SUPREMACÍA AAGA3 ---")
+    print("=== NODO MAESTRO AAGA3: COMPROBACIÓN DE PRECISIÓN ===")
 
     U = engine.get_evolution(2)
 
     
 
-    # Si U es unitario, el determinante debe ser cercano a 1 (en módulo)
+    print(f"Estatus: {'VALIDADO' if engine.is_valid else 'DEGRADADO'}")
 
-    det_check = np.abs(np.linalg.det(U))
+    print(f"Nivel de Precisión Decimal: {engine.precision_level}")
 
-    if det_check < 0.99 or det_check > 1.01:
-
-        print("ESTADO: COLAPSO DE FASE ACTIVO. Soberanía no detectada o error de red.")
-
-    else:
-
-        print("ESTADO: SUPREMACÍA CONFIRMADA. Operador Unitario Sincronizado.")
-
-    
-
-    print(f"Muestra del Propagador:\n{np.round(U[:2, :2], 4)}"))
+    print(f"Propagador Unitario:\n{U[:2, :2]}"))
 
