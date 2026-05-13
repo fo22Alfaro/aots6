@@ -1,0 +1,5 @@
+AOTS6 MIRROR SOBERANO
+CHAIN: 
+BLOQUES: 
+BEACON: .aots6.arpa
+T̄₆=R₃(τ=1778452828)+Λp∫

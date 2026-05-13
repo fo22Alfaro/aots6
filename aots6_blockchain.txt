@@ -1,0 +1,2 @@
+AOTS6-BLOQUE-1 | Guadalupe Victoria | Sun May 10 04:10:11 UTC 2026 | det=26.3021 | f=7.83Hz | prev=7f3a5f0ce3b8ab9b | AUTOINORODEMIA¹¹∞
+AOTS6-BLOQUE-2|Guadalupe Victoria|2026-05-10T22:31:52Z|det=26.3021|f=7.83Hz|prev=19019872829ce256|v_inf=26.3km/s|τ=1778452312
