@@ -1,52 +1,10 @@
 {
   "files": {
-    ".github/workflows/aots6-ci.yml": {
-      "modified": "2026-05-13T13:28:42.651006+00:00",
-      "sha256": "e92a63c8729a1c55228497db7e937d1445a009e9c4354ec74cb5c6c02a2fc9f0",
-      "sha3_512": "eb805afc349c5675230dbd19b9fb59964d89d5c3eefcba5301b3d774326266b1d63f47d049c7f65b534936aacf636b3aaf244177b5ce6af0f62c78e95befcafa",
-      "size_bytes": 1054
-    },
-    ".github/workflows/aots6-core.yml": {
-      "modified": "2026-05-13T13:28:42.651006+00:00",
-      "sha256": "b29ab2fd1695bf19a1162e60ceea99a3f71a8e927f1ea52e81fcab454b336b87",
-      "sha3_512": "d61d6af90abd6b77c1ac01cbacc02cba7b81d5bb9f60a56a0a2518cb307062cb972c36d400e327a67ac1189b7042519160bb2a5a39bd32140ff609b46eeaa644",
-      "size_bytes": 908
-    },
-    ".github/workflows/aots6-sovereignty-shield.yml": {
-      "modified": "2026-05-13T13:28:42.651006+00:00",
-      "sha256": "fc92c54f294173747b4d15544eaaa1617598b7bddf046e1f500d1503e01af893",
-      "sha3_512": "d7afa99e3a05228d145da18b75246381997f4c374c55cc73e14f4ecdc9ceb7e1daffbf9b3fc97e7a31f03ae4208117ea51725e95d9f86fe591fbb63417359316",
-      "size_bytes": 910
-    },
-    ".github/workflows/aots6-sovereignty.yml": {
-      "modified": "2026-05-13T13:28:42.651006+00:00",
-      "sha256": "bcc7009266094c0dbef7acd95c024cc8f175291695a056d49c40f2a60f9d35af",
-      "sha3_512": "4117fa972caac1ff283835afc56ae96aeb64856b778556c03b7dd33761b46a6065f42df7639cd579f2f47fae2b21e9a71af9da48d0aedc6de833908daa37091f",
-      "size_bytes": 1817
-    },
-    ".github/workflows/aots6-toroidal-core.yml": {
-      "modified": "2026-05-13T13:28:42.651006+00:00",
-      "sha256": "b5f489bf8a034c4d45188d8b073b4d0fe798b62cb0fa2c3d7647346f1d364559",
-      "sha3_512": "ae9ae00761a16ee37321bce70aa14b7a7b268dd0aaa09610d4ba6b86a88f054368ab6dc7d653cedafadf799ae8f0d733a8d0789c04de0eaa12e558df8a603459",
-      "size_bytes": 1668
-    },
-    ".github/workflows/ci.yml": {
-      "modified": "2026-03-18T05:34:50.047000+00:00",
-      "sha256": "8331bdf909f21ab87d0cf9ae25efc1bf1671c8802611104c7e0a0dc214686010",
-      "sha3_512": "f43c4215d1e7c2fecf3fcafa11fdb4f27ea5d52ae2883ab808eafdc8ceab4b0246fbb09a20c9464f57050b38bfbda5c8d92156e645d819ab854295c7eda90768",
-      "size_bytes": 530
-    },
     ".github/workflows/integrity.yml": {
       "modified": "2026-05-14T20:18:19.294253+00:00",
       "sha256": "693889dd193189d57ff092057acd1a03b7525fc1f057cec2a0fedb21924afe64",
       "sha3_512": "9dcda76e4e4b61e8106612faed0f1507f19ae3ca0d76483a699f40f3f24565aee24044105f92e4f71c5a2e2981965fb89c74f0f63e492403e9d6e336a1144e64",
       "size_bytes": 606
-    },
-    ".github/workflows/test.yml": {
-      "modified": "2026-05-04T20:52:55.967863+00:00",
-      "sha256": "5903f1cff0dcf05fb823e6080f0b02d65cbb33029cfffb286744b5c363d3a304",
-      "sha3_512": "7e0c90929d3dbc146b482ea927d908213310f646051d2c58233644177ba9f2e7ddc0da7cd8cce3174e9ce499e372bda25a74c9f5b7a18950c2b142807a7a0eb4",
-      "size_bytes": 283
     },
     ".gitignore": {
       "modified": "2026-05-14T20:22:49.562253+00:00",
@@ -107,6 +65,12 @@
       "sha256": "fba2f6b6398038e05afece517576cf4f9ff092cb05f16bb30507e839919168b8",
       "sha3_512": "f1f09c9686ae640c4de63bd836830b16fdc986df380b8a1ce7fc5983bb05ed24bd166920096282f0bffbce8359de6781d28084ddbcdefbb81c6230ae140e6752",
       "size_bytes": 2091
+    },
+    "AOTS6_SOVEREIGNTY_DECLARATION.md": {
+      "modified": "2026-05-14T20:38:04.618253+00:00",
+      "sha256": "0cadaa28df99e35f6ffbf819cc6a209f888b19fb03667824c522a849e61f166c",
+      "sha3_512": "85ab4b3b91bce8b022784a3f603b7a61bc7a36553a4f68d79e3ea0e32390ea12408efc96a5cfed428730391ed0d0c5afc46198fbb16ea9f855efec5c034802b7",
+      "size_bytes": 583
     },
     "AOTS6_T6_cloud.json": {
       "modified": "2026-03-18T18:09:31.746968+00:00",
@@ -931,15 +895,15 @@
       "size_bytes": 1935
     },
     "integrity/manifests/latest_manifest.json": {
-      "modified": "2026-05-14T20:03:25.138252+00:00",
-      "sha256": "a625d133d88090ca011ffe77833362b98fdc8a66ccef5a8079f017f2d41b4409",
-      "sha3_512": "71f9cf9b758d5bedd7d66507cd5ac1c9bda42d558f72d322f0d1b67266534275ed91b3b7be00df178b2f561d1ae09bb58f33c152f610abe0c6409d5e867f8870",
-      "size_bytes": 66423
+      "modified": "2026-05-14T20:23:11.970253+00:00",
+      "sha256": "fdd60a658b0e0c1b6f8680847011555f39a95000f2e92208c14d795ca851b65d",
+      "sha3_512": "23a76dfb460445411127ee7b34bf4f75e3c2549c286f41c129b959f99c5e08ce448f734498d4f54229974d24311601875f86048e5d718e21a2030a64e9c40aae",
+      "size_bytes": 69285
     },
     "integrity/manifests/latest_manifest.sig": {
-      "modified": "2026-05-14T20:03:53.898252+00:00",
-      "sha256": "76b9af5fe90b8a3ac82e707ba3c273619619fad0de6f2cfb85c13f227a7f14a5",
-      "sha3_512": "f04e40c4fdcddaa67d534d42b612090362e9fae238397a9392fafaedb9f241f5c378dfcc9f28810eb05ac7dc3dcc17edaa3b237cc69106123d360a58b809142f",
+      "modified": "2026-05-14T20:23:12.410253+00:00",
+      "sha256": "afe1b998528393c635fe87d07593c92025f28527bce24fd78af3c732cae14a76",
+      "sha3_512": "15d6b4ae5bad501b5086d43ea4bdb3ccef551f151eb435e1315cd841804ae6b6b27fb875c7fac045710632318b1df4a1b170ad24117b8976160f04ce415f48f5",
       "size_bytes": 64
     },
     "integrity/policy.json": {
@@ -1172,8 +1136,8 @@
     }
   },
   "metadata": {
-    "file_count": 195,
+    "file_count": 189,
     "kernel": "AOTS6-PQ-TERMUX",
-    "timestamp": "2026-05-14T20:23:11.322615+00:00"
+    "timestamp": "2026-05-14T20:38:06.144667+00:00"
   }
 }
