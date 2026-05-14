@@ -30,17 +30,41 @@
       "sha3_512": "e55b539862116be4c796a741fd4ad2b9faa51200c9195c6d2580fba283945e19730a93e6bb9e54aaa48e8f77863bbc00bd030c865c72e11bf0a863eebba043cd",
       "size_bytes": 2080
     },
+    "AOTS6_AUTHORITY.sig": {
+      "modified": "2026-05-14T23:27:24.978155+00:00",
+      "sha256": "5f24b71ef2356e98dc55547e3abe4e3e684673e68f58eeb7e1c39c27ace190b0",
+      "sha3_512": "22a90ff2c70056fc4bf43c09079bec747ccbabc95d21b0cceee3e88d05269e492512ef968e8e2db68d9a9407ed05729a04c1589f7c98d0407cfd397017683219",
+      "size_bytes": 64
+    },
     "AOTS6_Geodesics.svg": {
       "modified": "2026-03-18T18:09:31.710968+00:00",
       "sha256": "504f960999a14ecb55d8c1934f7d218321a128b4ea94978e2142fbb3cce2a5b2",
       "sha3_512": "784cb05104509376f48d5d79d5df33ab6db440034bda2225bbeabd3c67d57ee7ac6c0dd16f7266c4f12e5f0a63853919c3b4de6edd776ec18bf8312e1d44b195",
       "size_bytes": 17524
     },
+    "AOTS6_INTEGRITY.hash": {
+      "modified": "2026-05-14T23:27:24.742155+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha3_512": "a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26",
+      "size_bytes": 0
+    },
+    "AOTS6_MANIFEST.txt": {
+      "modified": "2026-05-14T23:27:25.062155+00:00",
+      "sha256": "281b37fb990dc5e2f7f456138fcf436d8d2b1239e82b3936a8c9093520e17115",
+      "sha3_512": "c894c08f21da925c92d3a9c97fbf55c9070e6147b8158cdc5988e1640ce9a52389c9e4f65acaf6d82d09b75d999024f78a45fe3807a5084c4e339277b1c4baec",
+      "size_bytes": 227
+    },
     "AOTS6_Manifesto_Public_GPT.pdf": {
       "modified": "2026-05-14T19:28:25.410252+00:00",
       "sha256": "ff0ae67dec13204d11217683be729251dd2eb58341898badbbbfc734be4cf5ca",
       "sha3_512": "d8d6d18450ec1176a6c7101ce7815ac1c9b64a46015e0a9748c1fd1f1e3ca69cf2e2c9c65cf52d914269e6a151c8ea21fc1d2bc8f753a65be0e03bef090bcad6",
       "size_bytes": 3427
+    },
+    "AOTS6_NET_AUTH.sig": {
+      "modified": "2026-05-14T23:12:54.760000+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha3_512": "a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26",
+      "size_bytes": 0
     },
     "AOTS6_Paper.md": {
       "modified": "2026-03-18T05:54:46.619000+00:00",
@@ -595,15 +619,15 @@
       "size_bytes": 1935
     },
     "integrity/manifests/latest_manifest.json": {
-      "modified": "2026-05-14T22:20:00.362253+00:00",
-      "sha256": "2296bca559ad3830c14f6a35f73aa815bbe6ae10193bd3d4b25085a487e5e3ee",
-      "sha3_512": "2ea94a5a116732f6180c1ada0551f3b30b027bb1a59192e9645371fa58dda963dac5fa4cdaff5c73037034937c7f668c817150a71d7d3e36027c8d67503d9424",
-      "size_bytes": 64414
+      "modified": "2026-05-14T23:08:17.880000+00:00",
+      "sha256": "968d589d8efae1bac7c897292a6618e620789e7de697889e47cec2a0b47ae7c7",
+      "sha3_512": "df479520137824965b61a3d6f364a43e2f1ea968d1e525645abb044ec8a1962aac79d6a3982105b20f3dfa17c490d8d32bb9fcb43f86d943a62aad17f2d9652a",
+      "size_bytes": 64415
     },
     "integrity/manifests/latest_manifest.sig": {
-      "modified": "2026-05-14T22:20:00.882253+00:00",
-      "sha256": "d106917291a42b572ed7d0723f0b448935e43a2d0da883db49441f5a8e1f5044",
-      "sha3_512": "84c1dcbc9153822ba6f24685174de0708122c6116290c4eaa8ffb77cef53f8d778b8587d16ea2d89ec05cd68b2b963ff018de3f4cf679e9108b5471c36d461b0",
+      "modified": "2026-05-14T23:08:18.312000+00:00",
+      "sha256": "08e330d8c484f0ba961f76968601d6b8ea459ae88c739cfb5d6c29ceaa47e84d",
+      "sha3_512": "ccd5f2c7fbf68150e4647c96e2246fc9958e8fb328a0e5c37af106a7d7614281911dc8830ee2f6df0e9c72a72d1d3a63c565dac36a4cfb679a4cb0a15a9d7462",
       "size_bytes": 64
     },
     "integrity/policy.json": {
@@ -1082,8 +1106,8 @@
     }
   },
   "metadata": {
-    "file_count": 180,
+    "file_count": 184,
     "kernel": "AOTS6-PQ-TERMUX",
-    "timestamp": "2026-05-14T23:08:17.156108+00:00"
+    "timestamp": "2026-05-14T23:27:26.357981+00:00"
   }
 }
