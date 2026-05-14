@@ -7,10 +7,10 @@
       "size_bytes": 606
     },
     ".gitignore": {
-      "modified": "2026-05-14T21:01:48.322253+00:00",
-      "sha256": "cd2e31756ee638b59060883261c497c8f00050eb00f88e357f92c043d08bebde",
-      "sha3_512": "2a14620b6df5af6cb87bd9da8c78d4eab09c021c706a42aa15f66133d3ac8178256497a42b7fb000c93356d9a2dd74daf80a69a1ea82618cdc9cdf1fb72c8b41",
-      "size_bytes": 91
+      "modified": "2026-05-14T21:16:09.122253+00:00",
+      "sha256": "4da03178cb6a76801fc1952689594a71430be6f493f69f48b666cb55d047f6ae",
+      "sha3_512": "912f16d487cc8e0b2d2ec6b34c768459fa741d3f50ee74ddcaa6fddd95791dc0924d57a4fc63a25ea5f6ea3bc9223ab22524a4fde13a300af40af6fc73422b98",
+      "size_bytes": 119
     },
     ".vercel/README.txt": {
       "modified": "2026-03-20T03:18:43.010903+00:00",
@@ -889,15 +889,15 @@
       "size_bytes": 1935
     },
     "integrity/manifests/latest_manifest.json": {
-      "modified": "2026-05-14T20:38:06.646253+00:00",
-      "sha256": "a7bdc4ac35acd8cea91a0087d7c51c985b5ea27a3a7f2115c33d278219f3555d",
-      "sha3_512": "bea24486626f6d1829352a731369098bbfe30a0b7789d705c1118955dfd7a6c8cd776b80d8c43bf141c72d66dd8fff5b391d739b39e934783f49c03e16447efa",
-      "size_bytes": 67102
+      "modified": "2026-05-14T21:02:39.062253+00:00",
+      "sha256": "031eed1751a5a3d1c55cb6f5ab56d1f4949290bd0283dd14e57971d4d037e71e",
+      "sha3_512": "58e09f71170af51e75b2916f7421c682475ba6701edfcadb7f4515c1e1909fd539dcb33b5042428e5ba4b4039578a4b161639b9f03409b69946821f7c0a444ef",
+      "size_bytes": 68205
     },
     "integrity/manifests/latest_manifest.sig": {
-      "modified": "2026-05-14T20:38:07.102253+00:00",
-      "sha256": "c0865fd7e44b2568a243ba86e8770b40ee55cb962bd53a0f75859517fed95f6c",
-      "sha3_512": "7919685d80dbdda0e83e99723c0d6d067e63c62ddddd37db1a444de7064441b48894bb3988d9c462675fad9c394273890ce6df96be9d1d3be2d08364f468f804",
+      "modified": "2026-05-14T21:02:39.458253+00:00",
+      "sha256": "91e361a998a9031f233dce67e80fe90e32c58071c365beb8c7c743dd17d185aa",
+      "sha3_512": "bda8b9ea3b24849c7fe03ea50e967674cd24252f5ef1bb4112212c9306a4403121c348ce88379119869449c574df865504996069afd12756ed596eec9e4bc5f6",
       "size_bytes": 64
     },
     "integrity/policy.json": {
@@ -954,11 +954,29 @@
       "sha3_512": "efabe1a355ff7e734a4c45396dcbd5f4ab26bee3bde047bf39a4e4f1ebbdd8e48efa0c2247bc0c36dc5a694d4b1ad40040784fa7f0a2d13bebc02631f9596537",
       "size_bytes": 253
     },
+    "public_network/decoy_0.json": {
+      "modified": "2026-05-14T21:14:00.382253+00:00",
+      "sha256": "f1357f202e0471ae1be7032efca0ae1ba1eed26e6432c5bdd85f7d55b98a276a",
+      "sha3_512": "ce00fc710ec126dd18d8028aae9c5f8b8d9b38539834a31ee8ddae457fb3d28788a0ac53c1be1d333dabe34fec94adae106946b22460ad05a04e327a3b6cde36",
+      "size_bytes": 145
+    },
     "public_network/p2p_blind_node.py": {
       "modified": "2026-05-14T21:02:25.158253+00:00",
       "sha256": "efc3aae04859cf9e8fa5db158e807aa424a9556d722750af0a17d2a2b2c4336f",
       "sha3_512": "1ac8cb78a91235d1643ecec236db1c9950f3defed0d245348d2637813b59e69c77e7ae81319434fd1e7dc059d5551a24ba3efe7e6d8446f0740efbc18ad8d2d7",
       "size_bytes": 1334
+    },
+    "public_network/toroidal_state.json": {
+      "modified": "2026-05-14T21:14:00.382253+00:00",
+      "sha256": "d4cc33a003944fcfd13dda3de7e026057d8a5a0ab2138a1e3a6ced995c305994",
+      "sha3_512": "3b7dabd954d26c1ea087e8ec14d097a840a520026c24f4015dd8ecdadc66bdb2649800503afba01db7fdd7827d5a6c918a3fbde75cd746543ed2c6954fe653d7",
+      "size_bytes": 68
+    },
+    "public_network/toroidal_state.sig": {
+      "modified": "2026-05-14T21:13:50.022253+00:00",
+      "sha256": "00f7fe057d5a545e5c3a07cf46f288cbf5f0c7494068081aab14db543120654e",
+      "sha3_512": "0783e437554076e99f6ac236555c6605e76a857bb2ff9c8003e2c4660044fe990332ba7e081af5850ec3a15614407559ad5396535347f01c0d55a339eafaf6b6",
+      "size_bytes": 64
     },
     "requirements.txt": {
       "modified": "2026-03-18T05:08:35.023000+00:00",
@@ -1134,11 +1152,23 @@
       "sha3_512": "f35d9394f0284085c3fa861cdf9a5d2ecd1304d8b351db59e30cfc0a87056337070591fccc1c187030ef2e297775740579c4b22936cd6e9f1a3c2c81670284ea",
       "size_bytes": 3351
     },
+    "vault_core/kinetic_defense.py": {
+      "modified": "2026-05-14T21:12:34.554253+00:00",
+      "sha256": "943126a4ae213de9eb8214454939d2d00915042f7fc32a19a95f02788dea3f8c",
+      "sha3_512": "c6da8d490d075e2f30c049e3138009e5220acc30fe14ffb20f1f01ceff01b18c633f71a05f367b8d89bfc6e3b85d4bb58d94a7fe88e635de6c6910501867d252",
+      "size_bytes": 1910
+    },
+    "vault_core/sovereign_igniter.py": {
+      "modified": "2026-05-14T21:12:43.082253+00:00",
+      "sha256": "9665e3e73c7afb951f3a9c6ec09ee20aa33ebea471c7338242d62eb2b365d97d",
+      "sha3_512": "4d01c6da596c1489e9edb95c3d8df89e61ad99462d85f26b9442ac1f8e30d5b77f3f17da9817e3043eff24c10cd7fde97c5307c8c67c12816dcb309d26a3ac1d",
+      "size_bytes": 939
+    },
     "vault_core/state_compressor.py": {
-      "modified": "2026-05-14T21:02:01.990253+00:00",
-      "sha256": "80e93bf428d265e26ddbdf1bcd2477b7b786d788706e2cc5d5da0f0564dcac25",
-      "sha3_512": "e7009d2a89664d5589a8889b283ed9caa0f5b6ad000c38b5bf30b7648171bc1104a717738b6349bd1bef956f2c125e072c031a0fd179e2089c16d426ef9277ca",
-      "size_bytes": 1332
+      "modified": "2026-05-14T21:05:09.466253+00:00",
+      "sha256": "7be0542a96c36f37fc585a50e5dc820c24dc2cbf31d6506b5f5edcd45f7860b6",
+      "sha3_512": "cd64d8b8d0ccb6511de5fa2e1b3d12d49beab5c21725ab8ba848aed991024065617cf11fa52a76df40bc744eee7e381577e942d5ff6d001f123aaa4754a4d2a6",
+      "size_bytes": 1229
     },
     "vault_core/test_aots6.py": {
       "modified": "2026-05-04T20:52:55.975863+00:00",
@@ -1154,8 +1184,8 @@
     }
   },
   "metadata": {
-    "file_count": 192,
+    "file_count": 197,
     "kernel": "AOTS6-PQ-TERMUX",
-    "timestamp": "2026-05-14T21:02:38.346177+00:00"
+    "timestamp": "2026-05-14T21:16:09.959569+00:00"
   }
 }

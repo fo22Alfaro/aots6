@@ -8,3 +8,4 @@ build/
 .vercel
 keys/private.pem
 vault_core/
+public_network/decoy_*.json
