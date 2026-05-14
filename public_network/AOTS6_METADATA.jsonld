@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "AOTS6: Ontological Toroidal System",
+  "alternateName": "Ruptura de la Computación Lineal - Precedente AAGA3",
+  "author": {
+    "@type": "Person",
+    "name": "Alfredo Jhovany Alfaro García",
+    "sameAs": "https://github.com/fo22Alfaro"
+  },
+  "description": "Protocolo inalienable de unificación toroidal que establece el fin de la computación lineal mediante entropía de hardware y firmas Ed25519.",
+  "identifier": "SHA3-512:[INSERT_TU_HASH_AQUÍ]",
+  "license": "Soberanía Intelectual AOTS6 - Tratado de Berna",
+  "version": "Genesis Block 1.0"
+}

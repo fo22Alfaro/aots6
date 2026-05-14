@@ -247,10 +247,10 @@
       "size_bytes": 116791
     },
     "README.md": {
-      "modified": "2026-05-14T19:28:25.374252+00:00",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "sha3_512": "a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26",
-      "size_bytes": 0
+      "modified": "2026-05-14T22:19:57.134253+00:00",
+      "sha256": "1f098fec4c5d514ba5a35434f6b45d71be5a92c591f93d981d48362e607d2ba8",
+      "sha3_512": "a2349b83e3231b8385fb098e03426a84a72988f2bf45c4d07b700e8295e0a30c5daeaf507b58b2e7628e2c220705480eb5890582f5e92cbc681a1a39d338d0cc",
+      "size_bytes": 899
     },
     "README_BADGE.md": {
       "modified": "2026-05-04T20:52:55.971863+00:00",
@@ -595,15 +595,15 @@
       "size_bytes": 1935
     },
     "integrity/manifests/latest_manifest.json": {
-      "modified": "2026-05-14T21:16:10.494253+00:00",
-      "sha256": "e61e00a2d556ff66257054da9433c5cbdb12880c86f3fdb90e9b7a8838fd9a7c",
-      "sha3_512": "d4720497650abf2b77ec8cbfd44be5992bb66c615592e536ec2c81b9f343c18c5fbdf3a64bda70232c164ab034440bb6b07786c298908a7cb8fc6669c87cbce1",
-      "size_bytes": 70004
+      "modified": "2026-05-14T22:05:04.490253+00:00",
+      "sha256": "66b752d8600247725f8b6fae41529b6dfa741cd43d3cd3fde98dc6c20bee7fba",
+      "sha3_512": "ddfef400ed1703e2c48af16aa182e5b113a04e59a2259be126b75949957e6f26ddbd8bfa8f84dcbcd183202f1f49d317e2ed14e0e3a2dfe6d96ce9849b943483",
+      "size_bytes": 64047
     },
     "integrity/manifests/latest_manifest.sig": {
-      "modified": "2026-05-14T21:16:10.894253+00:00",
-      "sha256": "f41fdbfe61999a51db203bdcc517d989b0c5ed8fa8abbede007e542809a09348",
-      "sha3_512": "f04c7702e838932676b44d650f909d9cba5a640afc6a291c66afd7670bb5dcb581ec9ce39274f4a7bd8909e6caa767c3f7153a8533206121a6661c55a590f002",
+      "modified": "2026-05-14T22:05:05.002253+00:00",
+      "sha256": "5f8fcc056a8d33eb438eb90fd5c6b08fad18b03c9ffb9d5aab66db23251e556b",
+      "sha3_512": "45101c1b7d438c1ea4565ec33deb72018fd2bb2b82e3ce903c561c3020b97cce24b15f5fd7ba6be955dd5b12a8977df21d5e71be3e9d3e7992402ccb7fe2bf05",
       "size_bytes": 64
     },
     "integrity/policy.json": {
@@ -665,6 +665,12 @@
       "sha256": "3651cffe8db8a75841fdbc2ed41bfca1be360f13b060bff74d9114ddd7e27e37",
       "sha3_512": "efabe1a355ff7e734a4c45396dcbd5f4ab26bee3bde047bf39a4e4f1ebbdd8e48efa0c2247bc0c36dc5a694d4b1ad40040784fa7f0a2d13bebc02631f9596537",
       "size_bytes": 253
+    },
+    "public_network/AOTS6_METADATA.jsonld": {
+      "modified": "2026-05-14T22:18:50.678253+00:00",
+      "sha256": "b3ba3d00c3819402802bd61417eec059deacb8a7b49954e058d5e1ab0c9e5080",
+      "sha3_512": "b1a42d5bfdce406a192055ab010143d853706dafbdcc154b1e3c5d632c3e21ee752b8c7660c14d1fd677c90c406dcfa677429e87278c4ec289ceb95dd25d3c1c",
+      "size_bytes": 635
     },
     "public_network/aots6_kernel_legacy.py": {
       "modified": "2026-05-14T22:05:02.754253+00:00",
@@ -1076,8 +1082,8 @@
     }
   },
   "metadata": {
-    "file_count": 179,
+    "file_count": 180,
     "kernel": "AOTS6-PQ-TERMUX",
-    "timestamp": "2026-05-14T22:05:03.870229+00:00"
+    "timestamp": "2026-05-14T22:19:59.656368+00:00"
   }
 }
