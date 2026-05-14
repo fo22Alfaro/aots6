@@ -1,11 +1,39 @@
+# ==========================================
+# AOTS6 SOVEREIGN PERIMETER - GITIGNORE
+# ==========================================
+
+# CAPA 0: PROTECCIÓN DE LÓGICA Y CIENCIA (BÓVEDA)
+vault_core/
+core/
 __pycache__/
 *.pyc
 .venv/
 dist/
 build/
-.DS_Store
+
+# CAPA 1: PROTECCIÓN DE IDENTIDAD Y AUTORIDAD
+keys/private.pem
+keys/*.key
 .env
 .vercel
-keys/private.pem
-vault_core/
-public_network/decoy_*.json
+.DS_Store
+
+# CAPA 2: BLOQUEO DE CÓDIGO FUENTE GLOBAL
+# Solo permitimos la ejecución, no la difusión de lógica
+*.py
+*.sh
+*.js
+*.lua
+
+# CAPA 3: ARCHIVOS TEMPORALES Y RUIDO DE SISTEMA
+*.log
+*.swp
+*.tmp
+.nfs*
+
+# CAPA 4: EXCEPCIONES DE INFRAESTRUCTURA PÚBLICA
+# Estos archivos SON necesarios para que el mundo verifique tu soberanía
+!public_network/p2p_blind_node.py
+!integrity/build_manifest.py
+!integrity/pq_sign.py
+!integrity/pq_verify.py
