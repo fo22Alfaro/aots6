@@ -7,3 +7,4 @@ build/
 .env
 .vercel
 keys/private.pem
+vault_core/
