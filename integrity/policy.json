@@ -1,0 +1,8 @@
+{
+  "protected_paths": [
+    "integrity/",
+    ".github/"
+  ],
+  "execution_environment": "Termux-Native",
+  "crypto_engine": "OpenSSL-Ed25519"
+}

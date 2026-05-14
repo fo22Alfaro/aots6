@@ -1,0 +1,6 @@
+{
+  "kernel": "AOTS6-PQ-INTEGRITY",
+  "hash_algorithm": ["SHA-256", "SHA3-512"],
+  "signature_model": "Ed25519-Native",
+  "repository_state_model": "Sovereign Termux Sync"
+}

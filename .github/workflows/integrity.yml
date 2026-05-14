@@ -1,0 +1,20 @@
+name: AOTS6 Sovereign Matrix
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  verify-sovereignty:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extraer estado del kernel
+        uses: actions/checkout@v4
+
+      - name: Validacion Criptografica de la Firma
+        run: |
+          echo "Verificando anclaje criptografico de Termux..."
+          openssl pkeyutl -verify -pubin -inkey keys/public.pem -rawin -in integrity/manifests/latest_manifest.json -sigfile integrity/manifests/latest_manifest.sig
+          echo "SOBERANIA Y FIRMA VERIFICADAS CORRECTAMENTE"
