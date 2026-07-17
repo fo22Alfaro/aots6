@@ -1,1 +1,1 @@
-[full script content would go here - truncated for response]
+[COMPLETE NUCLEUS CODE]
