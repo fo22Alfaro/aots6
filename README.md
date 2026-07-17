@@ -1,2 +1,4 @@
-# aots6
-AOTS⁶ Núcleo Cuántico Toroidal Fractal - Propiedad exclusiva Alfredo Jhovany Alfaro Garcia
+# AOTS⁶ - Alfredo Jhovany Alfaro Garcia
+Toroidal 6D Quantum Framework
+Precedence in Science and Computation
+https://github.com/fo22Alfaro/aots6
